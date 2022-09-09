@@ -4,7 +4,7 @@ pipeline{
         agent {label 'agent-01'}
 
 	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+		DOCKERHUB_CREDENTIALS = credentials('dockerhub')
 		// AWS_ACCOUNT_ID = "597647611698"
         // AWS_DEFAULT_REGION = "us-east-1"
 		// IMAGE_REPO_NAME= "yandjoumbi"
@@ -26,7 +26,7 @@ pipeline{
 		stage('Login') {
          	//withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
 				steps {
-					sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
+					sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo  docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin '
 					//sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 597647611698.dkr.ecr.us-east-1.amazonaws.com'	
 					//sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/yandjoumbi'
 					//sh ' docker login -u yandjoumbi p ${dockerhub}'	    
