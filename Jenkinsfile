@@ -15,6 +15,14 @@ pipeline{
 
 	stages {
 
+			stage('Build') {
+
+			steps {
+				sh 'docker build -t yandjoumbi/yann-dj:0.0.4 .'
+				//dockerImage = docker.build "yandjoumbi:latest"
+			}
+		}
+
         
 		stage('Login') {
 
@@ -24,17 +32,6 @@ pipeline{
 				//sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/yandjoumbi'	    
 			}
 		}
-
-		stage('Build') {
-
-			steps {
-				sh 'docker build -t yandjoumbi/yann-dj:0.0.4 .'
-				sh 'docker build -t yandjoumbi .'
-				//dockerImage = docker.build "yandjoumbi:latest"
-			}
-		}
-
- 
 
 		stage('Push') {
 
