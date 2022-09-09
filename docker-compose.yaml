@@ -6,7 +6,7 @@ services:
       expose:
         - 3000
     node:
-      image: "alpine3.15"
+      image: "alpine:latest"
   
     jenkins:
       image: jenkins/jenkins:lts
